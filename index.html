@@ -6,58 +6,156 @@
     <link href="./dist/output.css" rel="stylesheet" />
   </head>
   <body class="bg-gray-100 flex items-center justify-center h-screen">
-    <div class="w-full max-w-6xl p-4 ">
-        
-        <div class="flex items-center justify-center gap-2 ">
-            <input type="text" placeholder="Add a new task" class="border-2 border-gray-400 rounded-lg my-24 p-2 py-4  w-64 bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-400">
-            <button class="bg-cyan-500 text-white  border-2 border-cyan-500 rounded-lg my-24  p-4 hover:bg-blue-700">Create</button>
+    <div class="w-full max-w-6xl p-4">
+      <div class="flex items-center justify-center gap-4">
+        <input
+          type="text"
+          placeholder="Add a new task"
+          id="input-text"
+          class="border-2 border-gray-400 rounded-lg my-24 p-2 py-4 w-[50%] bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+        <button onClick="addTodo()"
+          id="btn-create"
+          class="bg-cyan-500 text-white border-2 border-cyan-500 rounded-lg my-24 p-4 hover:bg-blue-700"
+        >
+          Create
+        </button>
+      </div>
+      <div class="grid grid-cols-3 gap-20">
+        <div>
+          <div
+            class="bg-gray-500 text-white rounded-lg px-4 py-5 flex justify-between"
+          >
+            <span>TODO</span>
+            <span class="bg-white text-gray-700 rounded-full px-2" id="todoNum">2</span>
+          </div>
+          <div  id="newTodo" class="bg-tranparent py-8 rounded-b-lg space-y-2">
+            <div
+              
+              class="border shadow-[0_10px_10px_#a0aec0] p-2 py-5 my-4 rounded-lg flex justify-between items-center"
+            >
+              <span>Create portfolio</span>
+              <button onClick="delete_()" id="btn-delete" class="text-gray-600 " >
+                <svg
+                  class="h-8 w-8 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div
+              class="border shadow-[0_10px_10px_#a0aec0] p-2 py-5 my-4 rounded-lg flex justify-between items-center"
+            >
+              <span>Learn Next.js</span>
+              <button onClick="delete_()" class="text-gray-600" id="btn-delete">
+                <svg
+                  class="h-8 w-8 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="grid grid-cols-3 gap-20">
-            <div>
-                <div class="bg-gray-500 text-white rounded-lg px-4 py-5 flex justify-between">
-                    <span>TODO</span>
-                    <span class="bg-white text-gray-700 rounded-full px-2">2</span>
-                </div>
-                <div class="bg-tranparent py-8 rounded-b-lg space-y-2">
-                    <div class="border shadow-[0_10px_10px_#a0aec0] p-2 py-5 my-4 rounded-lg flex justify-between items-center">
-                        <span>Create portfolio</span>
-                        <button class="text-gray-600">-</button>
-                    </div>
-                    <div class="border shadow-[0_10px_10px_#a0aec0] p-2 py-5 my-4 rounded-lg flex justify-between items-center">
-                        <span>Learn Next.js</span>
-                        <button class="text-gray-600">-</button>
-                    </div>
-                </div>
+        <div id = "progress">
+          <div
+            class="bg-purple-500 text-white rounded-lg px-4 py-5 flex justify-between"
+          >
+            <span>IN PROGRESS</span>
+            <span class="bg-white text-purple-700 rounded-full px-2" id="progressNum">2</span>
+          </div>
+          <div class="draggable bg-tranparent py-8 rounded-b-lg space-y-2" id="newProgress" >
+            <div
+              class="border shadow-[0_10px_10px_#a0aec0] p-2 py-5 my-4 rounded-lg flex justify-between items-center"
+            >
+              <span>Create a video</span>
+              <button onClick="delete_()" class="text-gray-600" id="btn-delete">
+                <svg
+                  class="h-8 w-8 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </button>
             </div>
-            <div >
-                <div class="bg-purple-500 text-white rounded-lg px-4 py-5 flex justify-between">
-                    <span>IN PROGRESS</span>
-                    <span class="bg-white text-purple-700 rounded-full px-2">2</span>
-                </div>
-                <div class="bg-tranparent py-8 rounded-b-lg space-y-2">
-                    <div class="border shadow-[0_10px_10px_#a0aec0] p-2 py-5 my-4 rounded-lg flex justify-between items-center">
-                        <span>Create a video</span>
-                        <button class="text-gray-600">-</button>
-                    </div>
-                    <div class="border shadow-[0_10px_10px_#a0aec0] p-2 py-5 my-4 rounded-lg flex justify-between items-center">
-                        <span>Learn Node</span>
-                        <button class="text-gray-600">-</button>
-                    </div>
-                </div>
+            <div
+              class="border shadow-[0_10px_10px_#a0aec0] p-2 py-5 my-4 rounded-lg flex justify-between items-center"
+            >
+              <span>Learn Node</span>
+              <button onClick="delete_()" class="text-gray-600" id="btn-delete">
+                <svg
+                  class="h-8 w-8 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </button>
             </div>
-            <div>
-                <div class="bg-green-500 text-white rounded-lg px-4 py-5 flex justify-between">
-                    <span>CLOSED</span>
-                    <span class="bg-white text-green-700 rounded-full px-2">1</span>
-                </div>
-                <div class="bg-tranparent py-8 rounded-b-lg space-y-2">
-                    <div class="border  shadow-[0_10px_10px_#a0aec0] p-2 py-5 my-4 rounded-lg flex justify-between items-center">
-                        <span>Learn React</span>
-                        <button class="text-gray-600">-</button>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <div id="closed">
+          <div
+            class="bg-green-500 text-white rounded-lg px-4 py-5 flex justify-between"
+          >
+            <span>CLOSED</span>
+            <span class="bg-white text-green-700 rounded-full px-2" id="closedNum">1</span>
+          </div>
+          <div class="bg-tranparent py-8 rounded-b-lg space-y-2" id="newClosed">
+            <div
+              class="shadow-[0_10px_10px_#a0aec0] p-2 py-5 my-4 rounded-lg flex justify-between items-center"
+            >
+              <span>Learn React</span>
+              <button onClick="delete_()" class="text-gray-600" id="btn-delete">
+                <svg
+                  class="h-8 w-8 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+
+    <script src="script.js"></script>
+  </body>
 </html>
